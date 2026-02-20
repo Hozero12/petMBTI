@@ -11,8 +11,8 @@ const HIGH_THRESHOLD = 13; // 0-12 → low, 13-25 → high
 export const MBTI_ORDER = ["E", "S", "R", "T"] as const;
 
 export const MBTI_SCORE_CRITERIA = {
-  E: { high: "A", low: "L" }, // Active / Low
-  S: { high: "H", low: "I" }, // Human / Independent
+  E: { high: "A", low: "L" }, // Active / Low-energy
+  S: { high: "H", low: "I" }, // Human-oriented / Independent
   R: { high: "S", low: "B" },  // Sensitive / Bold
   T: { high: "R", low: "F" }, // Routine / Flexible
 } as const;
