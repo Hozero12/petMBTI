@@ -24,8 +24,7 @@
 .DS_Store
 *.pem
 
-# question data (로컬 전용)
-/src/data/
+
 
 # debug
 npm-debug.log*
