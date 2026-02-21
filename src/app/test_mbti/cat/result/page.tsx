@@ -1,4 +1,5 @@
 import { ShareButton } from "@/components/ShareButton";
+import { TraitExplainerButton } from "@/components/TraitExplainerButton";
 import { getCatResult } from "@/lib/cat-results";
 import type { Metadata } from "next";
 import Image from "next/image";
@@ -80,13 +81,16 @@ export default async function CatResultPage({ searchParams }: Props) {
         </header>
 
         {code && result && (
-          <ShareButton
+          <>
+            <TraitExplainerButton variant="cat" code={code} />
+            <ShareButton
             variant="cat"
             title={`고양이 MBTI ${code.toUpperCase()} 결과`}
             text={`내 반려고양이 MBTI는 ${code.toUpperCase()} (${result.title})! Pet BTI에서 확인해보세요.`}
             url={`/test_mbti/cat/result?code=${code}`}
             imageUrl={`/images/cat/${code.toLowerCase()}.png`}
           />
+          </>
         )}
 
         <Link

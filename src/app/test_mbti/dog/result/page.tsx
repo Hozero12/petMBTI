@@ -1,4 +1,5 @@
 import { ShareButton } from "@/components/ShareButton";
+import { TraitExplainerButton } from "@/components/TraitExplainerButton";
 import { getDogResult } from "@/lib/dog-results";
 import type { Metadata } from "next";
 import Image from "next/image";
@@ -80,13 +81,16 @@ export default async function DogResultPage({ searchParams }: Props) {
         </header>
 
         {code && result && (
-          <ShareButton
+          <>
+            <TraitExplainerButton variant="dog" code={code} />
+            <ShareButton
             variant="dog"
             title={`강아지 MBTI ${code.toUpperCase()} 결과`}
             text={`내 반려강아지 MBTI는 ${code.toUpperCase()} (${result.title})! Pet BTI에서 확인해보세요.`}
             url={`/test_mbti/dog/result?code=${code}`}
             imageUrl={`/images/dog/${code.toLowerCase()}.png`}
           />
+          </>
         )}
 
         <Link
