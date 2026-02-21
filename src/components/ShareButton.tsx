@@ -92,7 +92,7 @@ export function ShareButton({ title, text, url, imageUrl, variant = "dog" }: Pro
 
   const handleNativeShare = async () => {
     try {
-      if (typeof navigator !== "undefined" && navigator.share) {
+      if (typeof navigator !== "undefined" && "share" in navigator && typeof navigator.share === "function") {
         const shareData: ShareData & { files?: File[] } = {
           title,
           text: `${text}\n${fullUrl}`,
@@ -176,7 +176,7 @@ export function ShareButton({ title, text, url, imageUrl, variant = "dog" }: Pro
                   카카오톡으로 공유
                 </button>
               )}
-              {typeof navigator !== "undefined" && navigator.share && (
+              {typeof navigator !== "undefined" && "share" in navigator && typeof navigator.share === "function" && (
                 <button
                   type="button"
                   onClick={handleNativeShare}
