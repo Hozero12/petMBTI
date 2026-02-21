@@ -13,7 +13,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Pet MBTI",
+  title: "Pet BTI",
   description: "당신의 반려동물과 잘 맞는 MBTI를 알아보세요",
 };
 

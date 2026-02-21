@@ -1,30 +1,59 @@
+import Image from "next/image";
 import Link from "next/link";
 
 export default function Home() {
   return (
-    <div className="flex min-h-[100dvh] min-h-screen flex-col items-center justify-center bg-gradient-to-b from-amber-50 to-orange-50 dark:from-zinc-900 dark:to-zinc-950">
-      <main className="flex w-full max-w-2xl flex-col items-center justify-center gap-6 px-4 py-8 sm:gap-8 sm:px-6 sm:py-12 md:gap-10 md:px-8">
-        <h1 className="text-4xl font-bold tracking-tight text-zinc-900 dark:text-white sm:text-5xl md:text-6xl">
-          aaa{/* Pet MBTI */}
-        </h1>
-        <p className="text-center text-base leading-relaxed text-zinc-600 dark:text-zinc-400 sm:text-lg md:text-xl">
-          {/* 당신의 반려동물 MBTI를 찾고 공유해보세요. */}
-        </p>
-        <div className="flex w-full max-w-xs flex-col gap-3 sm:max-w-md sm:flex-row sm:gap-4">
+    <div className="flex min-h-[100dvh] min-h-screen flex-col items-center overflow-x-hidden bg-gradient-to-b from-amber-50 to-orange-50 dark:from-zinc-900 dark:to-zinc-950 sm:justify-center">
+      {/* 모바일: 이미지 + 버튼 이미지 하단에 오버레이 */}
+      <div className="relative h-[100dvh] w-screen sm:hidden">
+        <Image
+          src="/images/main/main_ph.jpeg"
+          alt="Pet BTI"
+          fill
+          className="object-cover"
+          priority
+          sizes="100vw"
+        />
+        <div className="absolute left-0 right-0 top-1/2 flex -translate-y-1/2 flex-row gap-3 px-4">
           <Link
             href="/test_mbti/dog"
-            className="flex min-h-[44px] flex-1 items-center justify-center rounded-full bg-amber-500 px-8 py-3 text-base font-semibold text-white shadow-md transition-colors hover:bg-amber-600 active:bg-amber-700"
+            className="flex min-h-[56px] flex-1 items-center justify-center rounded-xl border-2 border-blue-900/50 bg-blue-600 px-10 py-4 text-lg font-bold text-white shadow-[0_5px_0_#1e3a8a,0_8px_25px_rgba(0,0,0,0.35)] transition-all active:translate-y-[3px] active:shadow-[0_2px_0_#1e3a8a,0_4px_15px_rgba(0,0,0,0.25)]"
           >
             강아지용
           </Link>
           <Link
             href="/test_mbti/cat"
-            className="flex min-h-[44px] flex-1 items-center justify-center rounded-full bg-orange-500 px-8 py-3 text-base font-semibold text-white shadow-md transition-colors hover:bg-orange-600 active:bg-orange-700"
+            className="flex min-h-[56px] flex-1 items-center justify-center rounded-xl border-2 border-emerald-900/50 bg-emerald-600 px-10 py-4 text-lg font-bold text-white shadow-[0_5px_0_#064e3b,0_8px_25px_rgba(0,0,0,0.35)] transition-all active:translate-y-[3px] active:shadow-[0_2px_0_#064e3b,0_4px_15px_rgba(0,0,0,0.25)]"
           >
             고양이용
           </Link>
         </div>
-      </main>
+      </div>
+      {/* 웹: 이미지 전체화면 + 버튼 중앙 오버레이 */}
+      <div className="relative hidden h-[100dvh] w-screen sm:block">
+        <Image
+          src="/images/main/main.png"
+          alt="Pet BTI"
+          fill
+          className="object-cover"
+          priority
+          sizes="100vw"
+        />
+        <div className="absolute left-0 right-0 top-[85%] flex -translate-y-1/2 flex-row justify-center gap-4 px-8">
+          <Link
+            href="/test_mbti/dog"
+            className="flex min-h-[56px] min-w-[160px] flex-1 max-w-[200px] items-center justify-center rounded-xl border-2 border-blue-900/50 bg-blue-600 px-10 py-4 text-lg font-bold text-white shadow-[0_5px_0_#1e3a8a,0_8px_25px_rgba(0,0,0,0.35)] transition-all hover:bg-blue-500 active:translate-y-[3px] active:shadow-[0_2px_0_#1e3a8a,0_4px_15px_rgba(0,0,0,0.25)]"
+          >
+            강아지용
+          </Link>
+          <Link
+            href="/test_mbti/cat"
+            className="flex min-h-[56px] min-w-[160px] flex-1 max-w-[200px] items-center justify-center rounded-xl border-2 border-emerald-900/50 bg-emerald-600 px-10 py-4 text-lg font-bold text-white shadow-[0_5px_0_#064e3b,0_8px_25px_rgba(0,0,0,0.35)] transition-all hover:bg-emerald-500 active:translate-y-[3px] active:shadow-[0_2px_0_#064e3b,0_4px_15px_rgba(0,0,0,0.25)]"
+          >
+            고양이용
+          </Link>
+        </div>
+      </div>
     </div>
   );
 }

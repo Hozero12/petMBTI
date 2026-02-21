@@ -1,5 +1,6 @@
 import { getDogResult } from "@/lib/dog-results";
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 
 type Props = {
@@ -7,7 +8,7 @@ type Props = {
 };
 
 export const metadata: Metadata = {
-  title: "강아지 MBTI 결과 | Pet MBTI",
+  title: "강아지 MBTI 결과 | Pet BTI",
 };
 
 export default async function DogResultPage({ searchParams }: Props) {
@@ -15,7 +16,7 @@ export default async function DogResultPage({ searchParams }: Props) {
   const result = code ? getDogResult(code.toUpperCase()) : null;
 
   return (
-    <div className="flex min-h-[100dvh] min-h-screen flex-col items-center bg-gradient-to-b from-amber-50 to-orange-50 dark:from-zinc-900 dark:to-zinc-950">
+    <div className="flex min-h-[100dvh] min-h-screen flex-col items-center overflow-x-hidden bg-gradient-to-b from-amber-50 to-orange-50 dark:from-zinc-900 dark:to-zinc-950">
       <main className="flex w-full max-w-2xl flex-col gap-8 px-4 py-8 sm:gap-10 sm:px-6 sm:py-12 md:gap-12 md:px-8">
         <header className="text-center">
           <h1 className="text-2xl font-bold text-zinc-900 dark:text-white sm:text-3xl">
@@ -23,6 +24,17 @@ export default async function DogResultPage({ searchParams }: Props) {
           </h1>
           {code ? (
             <>
+              {result && (
+                <div className="relative -mx-4 mt-4 aspect-square w-[100vw] max-w-[calc(100%+2rem)] sm:mx-auto sm:max-w-none sm:w-56">
+                  <Image
+                    src={`/images/dog/${code.toLowerCase()}.png`}
+                    alt={result.title}
+                    fill
+                    className="object-contain"
+                    sizes="(max-width: 640px) 100vw, 224px"
+                  />
+                </div>
+              )}
               <p className="mt-4 text-3xl font-bold text-amber-600 dark:text-amber-500 sm:text-4xl">
                 {code.toUpperCase()}
               </p>
