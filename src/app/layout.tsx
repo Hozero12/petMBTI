@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
+import Script from "next/script";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -12,7 +13,13 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
+const baseUrl =
+  process.env.VERCEL_URL
+    ? `https://${process.env.VERCEL_URL}`
+    : process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000";
+
 export const metadata: Metadata = {
+  metadataBase: new URL(baseUrl),
   title: "Pet BTI",
   description: "당신의 반려동물과 잘 맞는 MBTI를 알아보세요",
 };
@@ -36,6 +43,18 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="ko">
+      {process.env.NEXT_PUBLIC_KAKAO_JS_KEY && (
+        <>
+          <Script
+            src="https://t1.kakaocdn.net/kakao_js_sdk/2.7.2/kakao.min.js"
+            crossOrigin="anonymous"
+            strategy="afterInteractive"
+          />
+          <Script id="kakao-init" strategy="afterInteractive">
+            {`Kakao.init('${process.env.NEXT_PUBLIC_KAKAO_JS_KEY}');`}
+          </Script>
+        </>
+      )}
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased min-h-[100dvh] w-full max-w-[100vw] flex flex-col`}
       >

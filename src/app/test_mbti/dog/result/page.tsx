@@ -1,3 +1,4 @@
+import { ShareButton } from "@/components/ShareButton";
 import { getDogResult } from "@/lib/dog-results";
 import type { Metadata } from "next";
 import Image from "next/image";
@@ -7,9 +8,31 @@ type Props = {
   searchParams: Promise<{ code?: string }>;
 };
 
-export const metadata: Metadata = {
-  title: "강아지 MBTI 결과 | Pet BTI",
-};
+export async function generateMetadata({ searchParams }: Props): Promise<Metadata> {
+  const { code } = await searchParams;
+  const result = code ? getDogResult(code.toUpperCase()) : null;
+  const title = result ? `강아지 MBTI ${code?.toUpperCase()} 결과 | Pet BTI` : "강아지 MBTI 결과 | Pet BTI";
+  const description = result
+    ? `내 반려강아지 MBTI는 ${code?.toUpperCase()} (${result.title})! Pet BTI에서 확인해보세요.`
+    : "당신의 반려강아지 MBTI를 알아보세요.";
+  const imageUrl = code ? `/images/dog/${code.toLowerCase()}.png` : undefined;
+
+  return {
+    title,
+    description,
+    openGraph: {
+      title,
+      description,
+      images: imageUrl ? [{ url: imageUrl, width: 512, height: 512 }] : undefined,
+    },
+    twitter: {
+      card: "summary_large_image",
+      title,
+      description,
+      images: imageUrl ? [imageUrl] : undefined,
+    },
+  };
+}
 
 export default async function DogResultPage({ searchParams }: Props) {
   const { code } = await searchParams;
@@ -56,6 +79,15 @@ export default async function DogResultPage({ searchParams }: Props) {
           )}
         </header>
 
+        {code && result && (
+          <ShareButton
+            variant="dog"
+            title={`강아지 MBTI ${code.toUpperCase()} 결과`}
+            text={`내 반려강아지 MBTI는 ${code.toUpperCase()} (${result.title})! Pet BTI에서 확인해보세요.`}
+            url={`/test_mbti/dog/result?code=${code}`}
+            imageUrl={`/images/dog/${code.toLowerCase()}.png`}
+          />
+        )}
 
         <Link
           href="/test_mbti/dog"
