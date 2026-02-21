@@ -109,7 +109,7 @@ export default function DogTestPage() {
       <main className="flex w-full max-w-2xl flex-col gap-8 px-4 py-8 sm:gap-10 sm:px-6 sm:py-12 md:gap-12 md:px-8">
         <header className="text-center">
           <h1 className="text-2xl font-bold text-zinc-900 dark:text-white sm:text-3xl">
-            강아지 MBTI 검사
+            강아지 MBTI
           </h1>
           <p className="mt-2 text-zinc-600 dark:text-zinc-400">
             모든 문항을 체크해주세요.

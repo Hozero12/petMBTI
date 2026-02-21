@@ -37,9 +37,12 @@ export default function RootLayout({
   return (
     <html lang="ko">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased min-h-[100dvh] w-full max-w-[100vw]`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased min-h-[100dvh] w-full max-w-[100vw] flex flex-col`}
       >
-        {children}
+        <div className="flex-1">{children}</div>
+        <footer className="fixed bottom-0 left-0 right-0 py-2 text-center text-xs text-zinc-600 dark:text-zinc-400 bg-white/60 dark:bg-zinc-900/60 backdrop-blur-sm">
+          © {new Date().getFullYear()} Pet BTI. All rights reserved.
+        </footer>
       </body>
     </html>
   );

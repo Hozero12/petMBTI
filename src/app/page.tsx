@@ -7,7 +7,7 @@ export default function Home() {
       {/* 모바일: 이미지 + 버튼 이미지 하단에 오버레이 */}
       <div className="relative h-[100dvh] w-screen sm:hidden">
         <Image
-          src="/images/main/main_ph.jpeg"
+          src="/images/main/main_ph2.jpeg"
           alt="Pet BTI"
           fill
           className="object-cover"
@@ -17,13 +17,13 @@ export default function Home() {
         <div className="absolute left-0 right-0 top-1/2 flex -translate-y-1/2 flex-row gap-3 px-4">
           <Link
             href="/test_mbti/dog"
-            className="flex min-h-[56px] flex-1 items-center justify-center rounded-xl border-2 border-blue-900/50 bg-blue-600 px-10 py-4 text-lg font-bold text-white shadow-[0_5px_0_#1e3a8a,0_8px_25px_rgba(0,0,0,0.35)] transition-all active:translate-y-[3px] active:shadow-[0_2px_0_#1e3a8a,0_4px_15px_rgba(0,0,0,0.25)]"
+            className="flex min-h-[56px] flex-1 items-center justify-center rounded-xl border-2 border-violet-900/50 bg-violet-500 px-10 py-4 text-xl font-bold text-white shadow-[0_5px_0_#5b21b6,0_8px_25px_rgba(0,0,0,0.35)] transition-all active:translate-y-[3px] active:shadow-[0_2px_0_#5b21b6,0_4px_15px_rgba(0,0,0,0.25)]"
           >
             강아지용
           </Link>
           <Link
             href="/test_mbti/cat"
-            className="flex min-h-[56px] flex-1 items-center justify-center rounded-xl border-2 border-emerald-900/50 bg-emerald-600 px-10 py-4 text-lg font-bold text-white shadow-[0_5px_0_#064e3b,0_8px_25px_rgba(0,0,0,0.35)] transition-all active:translate-y-[3px] active:shadow-[0_2px_0_#064e3b,0_4px_15px_rgba(0,0,0,0.25)]"
+            className="flex min-h-[56px] flex-1 items-center justify-center rounded-xl border-2 border-emerald-900/50 bg-emerald-600 px-10 py-4 text-xl font-bold text-white shadow-[0_5px_0_#064e3b,0_8px_25px_rgba(0,0,0,0.35)] transition-all active:translate-y-[3px] active:shadow-[0_2px_0_#064e3b,0_4px_15px_rgba(0,0,0,0.25)]"
           >
             고양이용
           </Link>
@@ -42,13 +42,13 @@ export default function Home() {
         <div className="absolute left-0 right-0 top-[85%] flex -translate-y-1/2 flex-row justify-center gap-4 px-8">
           <Link
             href="/test_mbti/dog"
-            className="flex min-h-[56px] min-w-[160px] flex-1 max-w-[200px] items-center justify-center rounded-xl border-2 border-blue-900/50 bg-blue-600 px-10 py-4 text-lg font-bold text-white shadow-[0_5px_0_#1e3a8a,0_8px_25px_rgba(0,0,0,0.35)] transition-all hover:bg-blue-500 active:translate-y-[3px] active:shadow-[0_2px_0_#1e3a8a,0_4px_15px_rgba(0,0,0,0.25)]"
+            className="flex min-h-[56px] min-w-[160px] flex-1 max-w-[200px] items-center justify-center rounded-xl border-2 border-violet-900/50 bg-violet-500 px-10 py-4 text-xl font-bold text-white shadow-[0_5px_0_#5b21b6,0_8px_25px_rgba(0,0,0,0.35)] transition-all hover:bg-violet-400 active:translate-y-[3px] active:shadow-[0_2px_0_#5b21b6,0_4px_15px_rgba(0,0,0,0.25)]"
           >
             강아지용
           </Link>
           <Link
             href="/test_mbti/cat"
-            className="flex min-h-[56px] min-w-[160px] flex-1 max-w-[200px] items-center justify-center rounded-xl border-2 border-emerald-900/50 bg-emerald-600 px-10 py-4 text-lg font-bold text-white shadow-[0_5px_0_#064e3b,0_8px_25px_rgba(0,0,0,0.35)] transition-all hover:bg-emerald-500 active:translate-y-[3px] active:shadow-[0_2px_0_#064e3b,0_4px_15px_rgba(0,0,0,0.25)]"
+            className="flex min-h-[56px] min-w-[160px] flex-1 max-w-[200px] items-center justify-center rounded-xl border-2 border-emerald-900/50 bg-emerald-600 px-10 py-4 text-xl font-bold text-white shadow-[0_5px_0_#064e3b,0_8px_25px_rgba(0,0,0,0.35)] transition-all hover:bg-emerald-500 active:translate-y-[3px] active:shadow-[0_2px_0_#064e3b,0_4px_15px_rgba(0,0,0,0.25)]"
           >
             고양이용
           </Link>

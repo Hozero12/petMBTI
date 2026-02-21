@@ -77,7 +77,7 @@ export const DOG_RESULTS: Record<DogResultCode, DogResult> = {
   },
   LIBF: {
     title: "평화로운 자유 댕댕이",
-    description: "차분 독립 유연함 MAX 댕댕이에요",
+    description: "차분 독립 유연함 MAX에요",
   },
 };
 
