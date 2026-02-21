@@ -14,7 +14,7 @@ export async function generateMetadata({ searchParams }: Props): Promise<Metadat
   const result = code ? getCatResult(code.toUpperCase()) : null;
   const title = result ? `고양이 MBTI ${code?.toUpperCase()} 결과 | Pet BTI` : "고양이 MBTI 결과 | Pet BTI";
   const description = result
-    ? `내 반려고양이 MBTI는 ${code?.toUpperCase()} (${result.title})! Pet BTI에서 확인해보세요.`
+    ? `내 반려고양이 MBTI는 ${code?.toUpperCase()} (${result.title})! 자세한 해설을 Pet BTI에서 확인해보세요.`
     : "당신의 반려고양이 MBTI를 알아보세요.";
   const imageUrl = code ? `/images/cat/${code.toLowerCase()}.png` : undefined;
 

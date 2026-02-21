@@ -1,6 +1,6 @@
+import { KakaoScript } from "@/components/KakaoScript";
 import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
-import Script from "next/script";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -17,6 +17,8 @@ const baseUrl =
   process.env.VERCEL_URL
     ? `https://${process.env.VERCEL_URL}`
     : process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000";
+
+const kakaoKey = process.env.NEXT_PUBLIC_KAKAO_JS_KEY;
 
 export const metadata: Metadata = {
   metadataBase: new URL(baseUrl),
@@ -43,18 +45,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="ko">
-      {process.env.NEXT_PUBLIC_KAKAO_JS_KEY && (
-        <>
-          <Script
-            src="https://t1.kakaocdn.net/kakao_js_sdk/2.7.2/kakao.min.js"
-            crossOrigin="anonymous"
-            strategy="afterInteractive"
-          />
-          <Script id="kakao-init" strategy="afterInteractive">
-            {`Kakao.init('${process.env.NEXT_PUBLIC_KAKAO_JS_KEY}');`}
-          </Script>
-        </>
-      )}
+      {kakaoKey && <KakaoScript apiKey={kakaoKey} />}
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased min-h-[100dvh] w-full max-w-[100vw] flex flex-col`}
       >

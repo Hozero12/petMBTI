@@ -40,6 +40,9 @@ export function ShareButton({ title, text, url, imageUrl, variant = "dog" }: Pro
     typeof window !== "undefined" && url.startsWith("/")
       ? `${window.location.origin}${url}`
       : url;
+  const mainUrl =
+    typeof window !== "undefined" ? `${window.location.origin}/` : "/";
+  const shareTextWithMain = `${text}\n\n결과 보기: ${fullUrl}\n\n나도 Pet BTI 검사해보기: ${mainUrl}`;
   const fullImageUrl =
     imageUrl && typeof window !== "undefined" && imageUrl.startsWith("/")
       ? `${window.location.origin}${imageUrl}`
@@ -61,7 +64,7 @@ export function ShareButton({ title, text, url, imageUrl, variant = "dog" }: Pro
         objectType: "feed",
         content: {
           title,
-          description: text,
+          description: shareTextWithMain,
           imageUrl: fullImageUrl || `${window.location.origin}/images/main/main.png`,
           link: {
             mobileWebUrl: fullUrl,
@@ -77,13 +80,13 @@ export function ShareButton({ title, text, url, imageUrl, variant = "dog" }: Pro
 
   const handleCopyLink = async () => {
     try {
-      await navigator.clipboard.writeText(`${text}\n${fullUrl}`);
+      await navigator.clipboard.writeText(shareTextWithMain);
       setCopied(true);
       setTimeout(() => setCopied(false), 2000);
       setShowModal(false);
     } catch {
       window.open(
-        `https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}&url=${encodeURIComponent(fullUrl)}`,
+        `https://twitter.com/intent/tweet?text=${encodeURIComponent(shareTextWithMain)}`,
         "_blank",
       );
       setShowModal(false);
@@ -95,7 +98,7 @@ export function ShareButton({ title, text, url, imageUrl, variant = "dog" }: Pro
       if (typeof navigator !== "undefined" && "share" in navigator && typeof navigator.share === "function") {
         const shareData: ShareData & { files?: File[] } = {
           title,
-          text: `${text}\n${fullUrl}`,
+          text: shareTextWithMain,
           url: fullUrl,
         };
 
@@ -106,7 +109,6 @@ export function ShareButton({ title, text, url, imageUrl, variant = "dog" }: Pro
             const file = new File([blob], "pet-bti-result.png", { type: blob.type });
             if (navigator.canShare({ files: [file] })) {
               shareData.files = [file];
-              shareData.text = text;
             }
           } catch {
             /* fallback */

@@ -46,7 +46,7 @@ export function TraitExplainerButton({ variant = "dog", code }: Props) {
           <path d="M12 16v-4" />
           <path d="M12 8h.01" />
         </svg>
-        코드 설명 보기
+        MBTI 해설 보기
       </button>
 
       {open && (
