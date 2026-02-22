@@ -107,12 +107,18 @@ export default function DogTestPage() {
   return (
     <div className="flex min-h-[100dvh] min-h-screen flex-col items-center bg-gradient-to-b from-amber-50 to-orange-50 dark:from-zinc-900 dark:to-zinc-950">
       <main className="flex w-full max-w-2xl flex-col gap-8 px-4 py-8 sm:gap-10 sm:px-6 sm:py-12 md:gap-12 md:px-8">
+        <Link
+          href="/"
+          className="self-start rounded-lg px-3 py-1.5 text-sm font-medium text-amber-600 transition-colors hover:bg-amber-100 dark:text-amber-500 dark:hover:bg-amber-900/30"
+        >
+          ← 홈으로
+        </Link>
         <header className="text-center">
           <h1 className="text-2xl font-bold text-zinc-900 dark:text-white sm:text-3xl">
             강아지 MBTI
           </h1>
           <p className="mt-2 text-zinc-600 dark:text-zinc-400">
-            모든 문항을 체크해주세요.
+            총 20문항 · 모든 문항을 체크해주세요.
           </p>
         </header>
 
