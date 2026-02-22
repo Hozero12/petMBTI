@@ -98,8 +98,6 @@ export default function DogTestPage() {
         (acc, t) => ({ ...acc, [t]: result[t] }),
         {} as Record<string, string>
       );
-      console.log("알파벳별 합계 (E S R T 순):", sumsOrdered);
-      console.log("채점 결과 (E S R T 순):", resultOrdered);
       return newScores;
     });
   };
