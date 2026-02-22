@@ -1,3 +1,4 @@
+import { GoogleAnalytics } from "@/components/GoogleAnalytics";
 import { KakaoScript } from "@/components/KakaoScript";
 import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
@@ -19,6 +20,7 @@ const baseUrl =
     : process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000";
 
 const kakaoKey = process.env.NEXT_PUBLIC_KAKAO_JS_KEY;
+const gaId = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID;
 
 export const metadata: Metadata = {
   metadataBase: new URL(baseUrl),
@@ -46,6 +48,7 @@ export default function RootLayout({
   return (
     <html lang="ko">
       {kakaoKey && <KakaoScript apiKey={kakaoKey} />}
+      {gaId && <GoogleAnalytics measurementId={gaId} />}
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased min-h-[100dvh] w-full max-w-[100vw] flex flex-col`}
       >
