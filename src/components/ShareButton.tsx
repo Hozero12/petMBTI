@@ -33,6 +33,7 @@ type Props = {
 export function ShareButton({ title, text, url, imageUrl, variant = "dog" }: Props) {
   const [showModal, setShowModal] = useState(false);
   const [copied, setCopied] = useState(false);
+  const [saved, setSaved] = useState(false);
 
   const hasKakao = !!process.env.NEXT_PUBLIC_KAKAO_JS_KEY;
 
@@ -89,6 +90,27 @@ export function ShareButton({ title, text, url, imageUrl, variant = "dog" }: Pro
         `https://twitter.com/intent/tweet?text=${encodeURIComponent(shareTextWithMain)}`,
         "_blank",
       );
+      setShowModal(false);
+    }
+  };
+
+  const handleSaveImage = async () => {
+    if (!fullImageUrl) return;
+    try {
+      const res = await fetch(fullImageUrl);
+      const blob = await res.blob();
+      const blobUrl = URL.createObjectURL(blob);
+      const a = document.createElement("a");
+      a.href = blobUrl;
+      a.download = "pet-bti-result.png";
+      a.click();
+      URL.revokeObjectURL(blobUrl);
+      setSaved(true);
+      setTimeout(() => {
+        setSaved(false);
+        setShowModal(false);
+      }, 1500);
+    } catch {
       setShowModal(false);
     }
   };
@@ -200,6 +222,28 @@ export function ShareButton({ title, text, url, imageUrl, variant = "dog" }: Pro
                     <line x1="15.41" y1="6.51" x2="8.59" y2="10.49" />
                   </svg>
                   다른 앱으로 공유
+                </button>
+              )}
+              {fullImageUrl && (
+                <button
+                  type="button"
+                  onClick={handleSaveImage}
+                  className="flex min-h-[52px] items-center justify-center gap-2 rounded-xl bg-zinc-100 font-semibold text-zinc-900 transition-colors hover:bg-zinc-200 dark:bg-zinc-800 dark:text-white dark:hover:bg-zinc-700"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="20"
+                    height="20"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                  >
+                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                    <polyline points="7 10 12 15 17 10" />
+                    <line x1="12" y1="15" x2="12" y2="3" />
+                  </svg>
+                  {saved ? "저장됨!" : "이미지 저장 (인스타그램)"}
                 </button>
               )}
               <button
