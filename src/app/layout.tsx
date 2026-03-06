@@ -40,8 +40,8 @@ export const metadata: Metadata = {
     "반려묘 성격",
     "Pet BTI",
   ],
-  authors: [{ name: "Pet BTI" }],
-  creator: "Pet BTI",
+  authors: [{ name: "냉댱연구소" }],
+  creator: "냉댱연구소",
   openGraph: {
     type: "website",
     locale: "ko_KR",
@@ -97,7 +97,7 @@ export default function RootLayout({
         {gaId && <GoogleAnalytics measurementId={gaId} />}
         <div className="flex-1">{children}</div>
         <footer className="fixed bottom-0 left-0 right-0 py-2 text-center text-xs text-zinc-600 dark:text-zinc-400 bg-white/60 dark:bg-zinc-900/60 backdrop-blur-sm">
-          © {new Date().getFullYear()} Pet BTI. All rights reserved.
+          © {new Date().getFullYear()} 냉댱연구소. All rights reserved.
         </footer>
       </body>
     </html>

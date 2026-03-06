@@ -169,7 +169,7 @@ export function ShareButton({ title, text, url, imageUrl, variant = "dog" }: Pro
           <polyline points="16 6 12 2 8 6" />
           <line x1="12" y1="2" x2="12" y2="15" />
         </svg>
-        공유하기
+        결과 공유하기
       </button>
 
       {showModal && (
@@ -185,7 +185,7 @@ export function ShareButton({ title, text, url, imageUrl, variant = "dog" }: Pro
           <div className="fixed inset-x-0 bottom-0 z-50 rounded-t-2xl bg-white p-4 pb-8 dark:bg-zinc-900">
             <div className="mx-auto mb-4 h-1 w-12 rounded-full bg-zinc-300" />
             <p className="mb-4 text-center font-semibold text-zinc-900 dark:text-white">
-              공유하기
+              결과 공유하기
             </p>
             <div className="flex flex-col gap-2">
               {hasKakao && (

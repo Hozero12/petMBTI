@@ -9,6 +9,7 @@ const webSiteSchema = {
   name: "Pet BTI",
   description: "반려동물 MBTI 검사 - 강아지, 고양이 성향 테스트",
   url: baseUrl,
+  publisher: { "@type": "Organization", name: "냉댱연구소" },
   potentialAction: {
     "@type": "SearchAction",
     target: {

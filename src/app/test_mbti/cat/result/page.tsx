@@ -65,9 +65,12 @@ export default async function CatResultPage({ searchParams }: Props) {
                   />
                 </div>
               )}
-              <p className="mt-4 text-3xl font-bold text-orange-600 dark:text-orange-500 sm:text-4xl">
-                {code.toUpperCase()}
-              </p>
+              <div className="mt-4 flex flex-col items-center gap-2">
+                <p className="text-3xl font-bold text-orange-600 dark:text-orange-500 sm:text-4xl">
+                  {code.toUpperCase()}
+                </p>
+                <TraitExplainerButton variant="cat" code={code} compact />
+              </div>
               {result && (
                 <div className="mt-6 space-y-2">
                   <p className="text-xl font-semibold text-zinc-900 dark:text-white">
@@ -87,24 +90,33 @@ export default async function CatResultPage({ searchParams }: Props) {
         </header>
 
         {code && result && (
-          <>
-            <TraitExplainerButton variant="cat" code={code} />
-            <ShareButton
-            variant="cat"
-            title={`고양이 MBTI ${code.toUpperCase()} 결과`}
-            text={`내 반려고양이 MBTI는 ${code.toUpperCase()} (${result.title})! Pet BTI에서 확인해보세요.`}
-            url={`/test_mbti/cat/result?code=${code}`}
-            imageUrl={`/images/cat/${code.toLowerCase()}.png`}
-          />
-          </>
+          <div className="flex w-full gap-3">
+            <div className="min-w-0 flex-1">
+              <ShareButton
+                variant="cat"
+                title={`고양이 MBTI ${code.toUpperCase()} 결과`}
+                text={`내 반려고양이 MBTI는 ${code.toUpperCase()} (${result.title})! Pet BTI에서 확인해보세요.`}
+                url={`/test_mbti/cat/result?code=${code}`}
+                imageUrl={`/images/cat/${code.toLowerCase()}.png`}
+              />
+            </div>
+            <Link
+              href="/test_mbti/cat"
+              className="flex min-h-[48px] flex-1 items-center justify-center rounded-full bg-emerald-500 text-base font-semibold text-white transition-colors hover:bg-emerald-600 sm:min-h-[52px]"
+            >
+              검사하기
+            </Link>
+          </div>
         )}
 
-        <Link
-          href="/test_mbti/cat"
-          className="flex min-h-[48px] w-full items-center justify-center rounded-full bg-orange-500 text-base font-semibold text-white transition-colors hover:bg-orange-600 sm:min-h-[52px]"
-        >
-          다시 검사하기
-        </Link>
+        {(!code || !result) && (
+          <Link
+            href="/test_mbti/cat"
+            className="flex min-h-[48px] w-full items-center justify-center rounded-full bg-orange-500 text-base font-semibold text-white transition-colors hover:bg-orange-600 sm:min-h-[52px]"
+          >
+            검사하기
+          </Link>
+        )}
       </main>
     </div>
   );

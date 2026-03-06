@@ -6,9 +6,10 @@ import { TRAIT_LABELS, TRAIT_PAIRS } from "@/lib/trait-labels";
 type Props = {
   variant?: "dog" | "cat";
   code?: string;
+  compact?: boolean;
 };
 
-export function TraitExplainerButton({ variant = "dog", code }: Props) {
+export function TraitExplainerButton({ variant = "dog", code, compact }: Props) {
   const [open, setOpen] = useState(false);
 
   const letters = code?.toUpperCase().split("") ?? [];
@@ -20,21 +21,25 @@ export function TraitExplainerButton({ variant = "dog", code }: Props) {
   const textClass = isDog
     ? "text-amber-800 dark:text-amber-200"
     : "text-orange-800 dark:text-orange-200";
-  const buttonClass = isDog
-    ? "border-amber-200 bg-amber-100 hover:bg-amber-200 dark:border-amber-800/50 dark:bg-amber-900/40 dark:hover:bg-amber-900/60 text-amber-800 dark:text-amber-200"
-    : "border-orange-200 bg-orange-100 hover:bg-orange-200 dark:border-orange-800/50 dark:bg-orange-900/40 dark:hover:bg-orange-900/60 text-orange-800 dark:text-orange-200";
+  const buttonClass = compact
+    ? isDog
+      ? "w-fit shrink-0 rounded-lg border-0 bg-amber-500 px-3 py-2 text-white hover:bg-amber-600 active:bg-amber-700"
+      : "w-fit shrink-0 rounded-lg border-0 bg-orange-500 px-3 py-2 text-white hover:bg-orange-600 active:bg-orange-700"
+    : isDog
+      ? "min-h-[48px] w-full rounded-xl border-2 border-amber-200 bg-amber-100 hover:bg-amber-200 dark:border-amber-800/50 dark:bg-amber-900/40 dark:hover:bg-amber-900/60 text-amber-800 dark:text-amber-200 sm:min-h-[52px]"
+      : "min-h-[48px] w-full rounded-xl border-2 border-orange-200 bg-orange-100 hover:bg-orange-200 dark:border-orange-800/50 dark:bg-orange-900/40 dark:hover:bg-orange-900/60 text-orange-800 dark:text-orange-200 sm:min-h-[52px]";
 
   return (
     <>
       <button
         type="button"
         onClick={() => setOpen(true)}
-        className={`flex min-h-[48px] w-full items-center justify-center gap-2 rounded-xl border px-4 font-semibold transition-colors ${buttonClass} sm:min-h-[52px]`}
+        className={`flex items-center justify-center gap-1.5 font-semibold transition-colors ${buttonClass}`}
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"
-          width="20"
-          height="20"
+          width={compact ? 16 : 20}
+          height={compact ? 16 : 20}
           viewBox="0 0 24 24"
           fill="none"
           stroke="currentColor"
@@ -46,7 +51,7 @@ export function TraitExplainerButton({ variant = "dog", code }: Props) {
           <path d="M12 16v-4" />
           <path d="M12 8h.01" />
         </svg>
-        MBTI 해설 보기
+        MBTI 코드 분석
       </button>
 
       {open && (
@@ -67,7 +72,7 @@ export function TraitExplainerButton({ variant = "dog", code }: Props) {
           >
             <div className="mb-4 flex items-center justify-between">
               <h2 id="trait-explainer-title" className={`text-lg font-bold ${textClass}`}>
-                코드 설명
+                코드 분석
               </h2>
               <button
                 type="button"
