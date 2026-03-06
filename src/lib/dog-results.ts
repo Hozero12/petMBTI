@@ -12,72 +12,106 @@ export type DogResultCode =
 export interface DogResult {
   title: string;
   description: string;
+  ownerMbti: string[];
+  traits: string[];
 }
 
 export const DOG_RESULTS: Record<DogResultCode, DogResult> = {
   AHSR: {
     title: "에너지 넘치는 충성 러버",
     description: "활발하고 보호자 중심적인 루틴 지킴이에요",
+    ownerMbti: ["ENFJ", "ESFJ", "ENFP"],
+    traits: ["집사 껌딱지", "활동량 높음", "루틴 중요", "보호자 중심 행동"],
   },
   AHSF: {
     title: "어디서든 사랑받는 핵인싸",
     description: "사람 좋아하고 적응력 좋은 분위기 메이커에요",
+    ownerMbti: ["ENFP", "ESFP", "ESFJ"],
+    traits: ["사람 좋아함", "낯가림 적음", "환경 적응 빠름", "놀이 좋아함"],
   },
   AHBR: {
     title: "용감한 보호자 바라기",
     description: "대범하지만 마음은 한 사람에게",
+    ownerMbti: ["ENTJ", "ESTJ", "ENFJ"],
+    traits: ["대범함", "집사 충성도 높음", "경계심 있음", "보호 본능"],
   },
   AHBF: {
     title: "세상은 내 놀이터",
     description: "활발 사교 적응력 끝판왕이에요",
+    ownerMbti: ["ESFP", "ENFP", "ESTP"],
+    traits: ["활동성 최고", "사교성 높음", "낯선 환경도 OK", "장난꾸러기"],
   },
   AISR: {
     title: "예민한 에너지 탐험가",
     description: "활발하지만 환경엔 민감해요",
+    ownerMbti: ["INTJ", "INTP", "INFJ"],
+    traits: ["활동적", "환경 변화 민감", "혼자 탐색 좋아함", "루틴 중요"],
   },
   AISF: {
     title: "변덕 많은 갈댕",
     description: "에너지 넘치지만 기분파에요",
+    ownerMbti: ["ENFP", "INFP", "ENTP"],
+    traits: ["에너지 높음", "기분파", "독립적", "새로운 것 관심 많음"],
   },
   AIBR: {
     title: "자유로운 모험 대장",
     description: "독립적이고 대담한 리더 댕댕이에요",
+    ownerMbti: ["ESTP", "ENTJ", "ENTP"],
+    traits: ["독립적", "대담함", "활동성 높음", "자기 방식 강함"],
   },
   AIBF: {
     title: "타고난 자유 영혼",
     description: "활발 독립 적응력까지 완벽해요",
+    ownerMbti: ["ENTP", "ESTP", "ENFP"],
+    traits: ["활발", "독립적", "적응력 높음", "어디서든 잘 지냄"],
   },
   LHSR: {
     title: "루틴을 사랑하는 껌딱지",
     description: "차분하고 보호자 중심적인 안정형이에요",
+    ownerMbti: ["ISFJ", "INFJ", "ESFJ"],
+    traits: ["차분함", "집사 중심", "루틴 선호", "안정적인 성격"],
   },
   LHSF: {
     title: "따뜻한 감성 동반자",
     description: "온화하고 사람 좋아하는 힐링형이에요",
+    ownerMbti: ["INFP", "ISFJ", "ESFJ"],
+    traits: ["온화함", "사람 좋아함", "조용한 애정 표현", "안정적"],
   },
   LHBR: {
     title: "조용한 수호자",
     description: "얌전하지만 속은 단단한 타입",
+    ownerMbti: ["ISTJ", "ESTJ", "INFJ"],
+    traits: ["조용함", "보호 본능", "낯선 사람 경계", "신뢰 깊음"],
   },
   LHBF: {
     title: "느긋한 사교댕",
     description: "차분하지만 친화력 좋은 스타일이에요",
+    ownerMbti: ["ESFP", "ISFP", "ENFP"],
+    traits: ["차분함", "친화력 있음", "스트레스 적음", "온순"],
   },
   LISR: {
     title: "섬세하고 똑 부러지는 관찰댕",
     description: "독립적이고 예민한 루틴러에요",
+    ownerMbti: ["INTJ", "INFJ", "ISTJ"],
+    traits: ["조용함", "예민함", "루틴 선호", "독립적인 성향"],
   },
   LISF: {
     title: "은근한 매력 부자",
     description: "조용하지만 적응력 있는 타입이에요",
+    ownerMbti: ["INFP", "ISFP", "INFJ"],
+    traits: ["차분함", "독립적", "적응력 있음", "조용한 애정"],
   },
   LIBR: {
     title: "무심한 카리스마",
     description: "독립적이고 대범한 평온형이에요",
+    ownerMbti: ["INTJ", "ISTP", "ENTJ"],
+    traits: ["독립적", "대담함", "감정 표현 적음", "자기 영역 확실"],
   },
   LIBF: {
     title: "평화로운 자유 댕댕이",
     description: "차분 독립 유연함 MAX에요",
+    ownerMbti: ["ISFP", "INFP", "ENTP"],
+    traits: ["느긋함", "독립적", "스트레스 적음", "환경 적응력 좋음"],
   },
 };
 

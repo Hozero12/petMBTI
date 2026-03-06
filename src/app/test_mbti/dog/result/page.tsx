@@ -41,7 +41,7 @@ export default async function DogResultPage({ searchParams }: Props) {
 
   return (
     <div className="flex min-h-[100dvh] min-h-screen flex-col items-center overflow-x-hidden bg-gradient-to-b from-amber-50 to-orange-50 dark:from-zinc-900 dark:to-zinc-950">
-      <main className="flex w-full max-w-2xl flex-col gap-8 px-4 py-8 sm:gap-10 sm:px-6 sm:py-12 md:gap-12 md:px-8">
+      <main className="flex w-full max-w-2xl flex-col gap-3 px-4 pt-0 pb-24 sm:gap-5 sm:px-6 sm:pt-1 md:gap-6 md:px-8 md:pb-28">
         <Link
           href="/"
           className="self-start rounded-lg px-3 py-1.5 text-sm font-medium text-amber-600 transition-colors hover:bg-amber-100 dark:text-amber-500 dark:hover:bg-amber-900/30"
@@ -72,13 +72,38 @@ export default async function DogResultPage({ searchParams }: Props) {
                 <TraitExplainerButton variant="dog" code={code} compact />
               </div>
               {result && (
-                <div className="mt-6 space-y-2">
-                  <p className="text-xl font-semibold text-zinc-900 dark:text-white">
-                    {result.title}
-                  </p>
-                  <p className="text-zinc-600 dark:text-zinc-400">
-                    {result.description}
-                  </p>
+                <div className="mt-6 w-full space-y-6 text-left">
+                  <div className="space-y-2 text-center">
+                    <p className="text-xl font-bold text-zinc-900 dark:text-white sm:text-2xl">
+                      {result.title}
+                    </p>
+                    <p className="text-base leading-relaxed text-zinc-600 dark:text-zinc-400">
+                      {result.description}
+                    </p>
+                  </div>
+                  <section className="overflow-hidden rounded-2xl border-2 border-amber-200/80 bg-amber-50 p-5 shadow-sm dark:border-amber-800/50 dark:bg-amber-900/25">
+                    <h2 className="mb-3 text-xl font-bold text-amber-800 dark:text-amber-200">
+                      잘 맞는 집사 MBTI
+                    </h2>
+                    <p className="pl-0.5 text-lg leading-relaxed text-zinc-700 dark:text-zinc-300">
+                      {result.ownerMbti.join(", ")}
+                    </p>
+                  </section>
+                  <section className="overflow-hidden rounded-2xl border-2 border-amber-200/80 bg-amber-50 p-5 shadow-sm dark:border-amber-800/50 dark:bg-amber-900/25">
+                    <h2 className="mb-3 text-xl font-bold text-amber-800 dark:text-amber-200">
+                      이 유형 강아지 특징
+                    </h2>
+                    <div className="flex flex-wrap gap-2">
+                      {result.traits.map((trait, i) => (
+                        <span
+                          key={i}
+                          className="rounded-full bg-violet-100 px-4 py-2 text-base font-semibold text-violet-800 dark:bg-violet-900/50 dark:text-violet-200"
+                        >
+                          {trait}
+                        </span>
+                      ))}
+                    </div>
+                  </section>
                 </div>
               )}
             </>
@@ -90,32 +115,44 @@ export default async function DogResultPage({ searchParams }: Props) {
         </header>
 
         {code && result && (
-          <div className="flex w-full gap-3">
-            <div className="min-w-0 flex-1">
-              <ShareButton
-                variant="dog"
-                title={`강아지 MBTI ${code.toUpperCase()} 결과`}
-                text={`내 반려강아지 MBTI는 ${code.toUpperCase()} (${result.title})! Pet BTI에서 확인해보세요.`}
-                url={`/test_mbti/dog/result?code=${code}`}
-                imageUrl={`/images/dog/${code.toLowerCase()}.png`}
-              />
+          <div className="fixed bottom-0 left-0 right-0 z-30 border-t border-amber-200/50 bg-amber-50/95 px-4 pt-3 pb-2 backdrop-blur-sm dark:border-zinc-800 dark:bg-zinc-950/95 sm:px-6 md:max-w-2xl md:left-1/2 md:right-auto md:-translate-x-1/2 md:px-8">
+            <div className="mx-auto flex w-full max-w-2xl flex-col gap-1.5">
+              <div className="flex gap-3">
+              <div className="min-w-0 flex-1">
+                <ShareButton
+                  variant="dog"
+                  title={`강아지 MBTI ${code.toUpperCase()} 결과`}
+                  text={`내 반려강아지 MBTI는 ${code.toUpperCase()} (${result.title})! Pet BTI에서 확인해보세요.`}
+                  url={`/test_mbti/dog/result?code=${code}`}
+                  imageUrl={`/images/dog/${code.toLowerCase()}.png`}
+                />
+              </div>
+              <Link
+                href="/test_mbti/dog"
+                className="flex min-h-[48px] flex-1 items-center justify-center rounded-full bg-violet-500 text-base font-semibold text-white transition-colors hover:bg-violet-600 sm:min-h-[52px]"
+              >
+                검사하기
+              </Link>
             </div>
-            <Link
-              href="/test_mbti/dog"
-              className="flex min-h-[48px] flex-1 items-center justify-center rounded-full bg-violet-500 text-base font-semibold text-white transition-colors hover:bg-violet-600 sm:min-h-[52px]"
-            >
-              검사하기
-            </Link>
+            <p className="text-center text-xs text-zinc-500 dark:text-zinc-400">
+              © {new Date().getFullYear()} 냉댱연구소. All rights reserved.
+            </p>
+            </div>
           </div>
         )}
 
         {(!code || !result) && (
-          <Link
-            href="/test_mbti/dog"
-            className="flex min-h-[48px] w-full items-center justify-center rounded-full bg-amber-500 text-base font-semibold text-white transition-colors hover:bg-amber-600 sm:min-h-[52px]"
-          >
-            검사하기
-          </Link>
+          <div className="fixed bottom-0 left-0 right-0 z-30 flex flex-col gap-1.5 border-t border-amber-200/50 bg-amber-50/95 px-4 pt-3 pb-2 backdrop-blur-sm dark:border-zinc-800 dark:bg-zinc-950/95 sm:px-6 md:max-w-2xl md:left-1/2 md:right-auto md:-translate-x-1/2 md:px-8">
+            <Link
+              href="/test_mbti/dog"
+              className="flex min-h-[48px] w-full items-center justify-center rounded-full bg-amber-500 text-base font-semibold text-white transition-colors hover:bg-amber-600 sm:min-h-[52px]"
+            >
+              검사하기
+            </Link>
+            <p className="text-center text-xs text-zinc-500 dark:text-zinc-400">
+              © {new Date().getFullYear()} 냉댱연구소. All rights reserved.
+            </p>
+          </div>
         )}
       </main>
     </div>
