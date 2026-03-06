@@ -128,7 +128,7 @@ export default async function CatResultPage({ searchParams }: Props) {
                 />
               </div>
               <Link
-                href="/test_mbti/cat"
+                href="/"
                 className="flex min-h-[48px] flex-1 items-center justify-center rounded-full bg-emerald-500 text-base font-semibold text-white transition-colors hover:bg-emerald-600 sm:min-h-[52px]"
               >
                 검사하기
@@ -144,7 +144,7 @@ export default async function CatResultPage({ searchParams }: Props) {
         {(!code || !result) && (
           <div className="fixed bottom-0 left-0 right-0 z-30 flex flex-col gap-1.5 border-t border-orange-200/50 bg-orange-50/95 px-4 pt-3 pb-2 backdrop-blur-sm dark:border-zinc-800 dark:bg-zinc-950/95 sm:px-6 md:max-w-2xl md:left-1/2 md:right-auto md:-translate-x-1/2 md:px-8">
             <Link
-              href="/test_mbti/cat"
+              href="/"
               className="flex min-h-[48px] w-full items-center justify-center rounded-full bg-orange-500 text-base font-semibold text-white transition-colors hover:bg-orange-600 sm:min-h-[52px]"
             >
               검사하기
