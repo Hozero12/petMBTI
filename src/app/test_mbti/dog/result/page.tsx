@@ -85,9 +85,21 @@ export default async function DogResultPage({ searchParams }: Props) {
                     <h2 className="mb-3 text-xl font-bold text-amber-800 dark:text-amber-200">
                       잘 맞는 집사 MBTI
                     </h2>
-                    <p className="pl-0.5 text-lg leading-relaxed text-zinc-700 dark:text-zinc-300">
-                      {result.ownerMbti.join(", ")}
-                    </p>
+                    <div className="flex flex-wrap gap-2">
+                      {result.ownerMbti.map((mbti) => (
+                        <span
+                          key={mbti}
+                          className="rounded-xl bg-slate-200 px-4 py-2 text-base font-semibold text-slate-800 dark:bg-slate-600 dark:text-slate-100"
+                        >
+                          {mbti}
+                        </span>
+                      ))}
+                    </div>
+                    {result.ownerMbtiDescription && (
+                      <p className="mt-3 text-base leading-relaxed text-zinc-700 dark:text-zinc-300">
+                        {result.ownerMbtiDescription}
+                      </p>
+                    )}
                   </section>
                   <section className="overflow-hidden rounded-2xl border-2 border-amber-200/80 bg-amber-50 p-5 shadow-sm dark:border-amber-800/50 dark:bg-amber-900/25">
                     <h2 className="mb-3 text-xl font-bold text-amber-800 dark:text-amber-200">
