@@ -228,7 +228,7 @@ export function ShareButton({ title, text, url, imageUrl, variant = "dog" }: Pro
                 <button
                   type="button"
                   onClick={handleSaveImage}
-                  className="flex min-h-[52px] items-center justify-center gap-2 rounded-xl bg-zinc-100 font-semibold text-zinc-900 transition-colors hover:bg-zinc-200 dark:bg-zinc-800 dark:text-white dark:hover:bg-zinc-700"
+                  className="hidden flex min-h-[52px] items-center justify-center gap-2 rounded-xl bg-zinc-100 font-semibold text-zinc-900 transition-colors hover:bg-zinc-200 dark:bg-zinc-800 dark:text-white dark:hover:bg-zinc-700"
                 >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
