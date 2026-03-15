@@ -1,5 +1,3 @@
-import { Heart } from 'lucide-react';
-
 export function Footer() {
   return (
     <footer className="bg-gray-900 text-white px-4 py-12">
@@ -9,12 +7,10 @@ export function Footer() {
           <div className="md:col-span-2">
             <div className="flex items-center gap-2 mb-4">
               <span className="text-3xl">🐾</span>
-              <h3 className="text-2xl font-bold">펫 MBTI</h3>
+              <h3 className="text-2xl font-bold">PetBTI (냉댱연구소)</h3>
             </div>
             <p className="text-gray-400 mb-4">
-              반려동물의 성격을 이해하고
-              <br />
-              더 행복한 동행을 만들어가요
+              반려동물과 더 행복한 동행을 연구합니다.
             </p>
             <div className="flex gap-4">
               <a href="https://www.instagram.com/petbti" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition-colors">
@@ -31,36 +27,20 @@ export function Footer() {
             </div>
           </div>
           
-          {/* Links */}
-          <div>
-            <h4 className="font-bold mb-4">서비스</h4>
-            <ul className="space-y-2 text-gray-400">
-              <li><a href="/test_mbti/dog" className="hover:text-white transition-colors">강아지 테스트</a></li>
-              <li><a href="/test_mbti/cat" className="hover:text-white transition-colors">고양이 테스트</a></li>
-              <li><a href="/test_mbti/dog/result" className="hover:text-white transition-colors">결과 보기</a></li>
-            </ul>
-          </div>
-          
-          <div>
+          {/* <div>
             <h4 className="font-bold mb-4">정보</h4>
             <ul className="space-y-2 text-gray-400">
               <li><a href="#" className="hover:text-white transition-colors">소개</a></li>
               <li><a href="#" className="hover:text-white transition-colors">이용약관</a></li>
               <li><a href="#" className="hover:text-white transition-colors">개인정보처리방침</a></li>
             </ul>
-          </div>
+          </div> */}
         </div>
         
-        {/* Bottom */}
-        <div className="border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
+        <div className="border-t border-gray-800 pt-8 text-center">
           <p className="text-gray-400 text-sm">
             © {new Date().getFullYear()} 냉댱연구소. All rights reserved.
           </p>
-          <div className="flex items-center gap-2 text-gray-400">
-            <span>Made with</span>
-            <Heart className="w-4 h-4 text-red-500 fill-red-500" />
-            <span>for pets</span>
-          </div>
         </div>
       </div>
     </footer>

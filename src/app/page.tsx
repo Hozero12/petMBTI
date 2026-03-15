@@ -23,7 +23,7 @@ export default function Home() {
       <Hero />
       <Features />
       <PetTypes />
-      <CTA />
+      {/* <CTA /> */}
       <Footer />
     </div>
   );

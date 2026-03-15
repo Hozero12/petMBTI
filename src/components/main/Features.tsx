@@ -1,7 +1,7 @@
 import {
   Brain,
   HeartHandshake,
-  Sparkles,
+  Share2,
   TrendingUp,
 } from "lucide-react";
 
@@ -23,10 +23,10 @@ const features = [
     bgColor: "bg-blue-100",
   },
   {
-    icon: Sparkles,
-    title: "재미있는 결과",
+    icon: Share2,
+    title: "재미있는 결과 공유",
     description:
-      "귀여운 일러스트와 함께 즐거운 결과를 확인하세요",
+      "귀여운 일러스트와 함께 즐거운 결과를 확인하고 공유해보세요",
     color: "text-indigo-600",
     bgColor: "bg-indigo-100",
   },

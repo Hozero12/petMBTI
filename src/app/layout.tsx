@@ -96,9 +96,6 @@ export default function RootLayout({
         {kakaoKey && <KakaoScript apiKey={kakaoKey} />}
         {gaId && <GoogleAnalytics measurementId={gaId} />}
         <div className="flex-1">{children}</div>
-        <footer className="fixed bottom-0 left-0 right-0 py-2 text-center text-xs text-zinc-600 dark:text-zinc-400 bg-white/60 dark:bg-zinc-900/60 backdrop-blur-sm">
-          © {new Date().getFullYear()} 냉댱연구소. All rights reserved.
-        </footer>
       </body>
     </html>
   );

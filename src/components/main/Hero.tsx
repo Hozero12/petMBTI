@@ -1,33 +1,142 @@
+"use client";
+
+import { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { Button } from "./ui/button";
-import { Sparkles, Heart } from "lucide-react";
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "./ui/dialog";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "./ui/tabs";
+import {
+  type CarouselApi,
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "./ui/carousel";
+import { DOG_RESULTS } from "@/lib/dog-results";
+import { CAT_RESULTS } from "@/lib/cat-results";
+import type { DogResultCode } from "@/lib/dog-results";
+import type { CatResultCode } from "@/lib/cat-results";
+
+const HERO_SLIDE_COUNT = 5;
+
+function HeroImageCarousel() {
+  const [api, setApi] = useState<CarouselApi | null>(null);
+  const [current, setCurrent] = useState(0);
+
+  useEffect(() => {
+    if (!api) return;
+    setCurrent(api.selectedScrollSnap());
+    const onSelect = () => setCurrent(api.selectedScrollSnap());
+    api.on("select", onSelect);
+    return () => {
+      api.off("select", onSelect);
+    };
+  }, [api]);
+
+  return (
+    <div className="relative w-full h-[500px] md:h-[600px] overflow-hidden">
+      <Carousel opts={{ loop: true }} setApi={setApi} className="w-full h-full">
+        <CarouselContent className="h-full -ml-0">
+          {[1, 2, 3, 4, 5].map((n) => (
+            <CarouselItem key={n} className="pl-0 basis-full h-full">
+              <div className="relative w-full h-[500px] md:h-[600px] bg-gray-50">
+                <Image
+                  src={`/images/code_explain/${n}.jpeg`}
+                  alt={`코드 설명 ${n}`}
+                  fill
+                  className="object-contain object-center"
+                  sizes="100vw"
+                  priority={n === 1}
+                />
+              </div>
+            </CarouselItem>
+          ))}
+        </CarouselContent>
+        <CarouselPrevious className="left-2 hidden md:flex" />
+        <CarouselNext className="right-2 hidden md:flex" />
+      </Carousel>
+      <div className="absolute bottom-2 left-1/2 -translate-x-1/2 flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-black/25 backdrop-blur-sm">
+        <div className="flex-1 min-w-[80px] h-1 bg-white/40 rounded-full overflow-hidden">
+          <div
+            className="h-full bg-white rounded-full transition-all duration-300"
+            style={{ width: `${((current + 1) / HERO_SLIDE_COUNT) * 100}%` }}
+          />
+        </div>
+        <span className="text-xs font-medium text-white/90 tabular-nums">
+          {current + 1}/{HERO_SLIDE_COUNT}
+        </span>
+      </div>
+    </div>
+  );
+}
+
+const RESULT_CODES: DogResultCode[] = [
+  "AHSR", "AHSF", "AHBR", "AHBF",
+  "AISR", "AISF", "AIBR", "AIBF",
+  "LHSR", "LHSF", "LHBR", "LHBF",
+  "LISR", "LISF", "LIBR", "LIBF",
+];
+
+function ResultBrowseContent() {
+  return (
+    <Tabs defaultValue="dog" className="w-full">
+      <TabsList className="grid w-full grid-cols-2 mb-4">
+        <TabsTrigger value="dog">🐕 강아지</TabsTrigger>
+        <TabsTrigger value="cat">🐱 고양이</TabsTrigger>
+      </TabsList>
+      <TabsContent value="dog" className="mt-0">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-3 max-h-[60vh] overflow-y-auto pr-1">
+          {RESULT_CODES.map((code) => {
+            const r = DOG_RESULTS[code];
+            return (
+              <Link
+                key={code}
+                href={`/test_mbti/dog/result?code=${code.toLowerCase()}`}
+                className="block p-3 rounded-lg border border-gray-200 hover:border-purple-400 hover:bg-purple-50/50 transition-colors text-left"
+              >
+                <span className="text-xs font-mono font-semibold text-purple-600">{code}</span>
+                <p className="text-sm font-bold text-gray-900 mt-0.5 line-clamp-2">{r.title}</p>
+                <p className="text-xs text-gray-500 mt-0.5 line-clamp-2">{r.description}</p>
+              </Link>
+            );
+          })}
+        </div>
+      </TabsContent>
+      <TabsContent value="cat" className="mt-0">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-3 max-h-[60vh] overflow-y-auto pr-1">
+          {RESULT_CODES.map((code) => {
+            const r = CAT_RESULTS[code as CatResultCode];
+            return (
+              <Link
+                key={code}
+                href={`/test_mbti/cat/result?code=${code.toLowerCase()}`}
+                className="block p-3 rounded-lg border border-gray-200 hover:border-emerald-400 hover:bg-emerald-50/50 transition-colors text-left"
+              >
+                <span className="text-xs font-mono font-semibold text-emerald-600">{code}</span>
+                <p className="text-sm font-bold text-gray-900 mt-0.5 line-clamp-2">{r.title}</p>
+                <p className="text-xs text-gray-500 mt-0.5 line-clamp-2">{r.description}</p>
+              </Link>
+            );
+          })}
+        </div>
+      </TabsContent>
+    </Tabs>
+  );
+}
 
 export function Hero() {
   return (
     <section className="relative overflow-hidden">
-      {/* Top Image Section */}
-      <div className="relative w-full h-[300px] md:h-[400px] overflow-hidden">
-        {/* Mobile image - 세로형 */}
-        <Image
-          src="/images/main/main_ph2.jpeg"
-          alt="Pet MBTI"
-          fill
-          className="md:hidden object-cover object-center"
-          sizes="100vw"
-          priority
-        />
-
-        {/* Desktop image - 가로형 */}
-        <Image
-          src="/images/main/main.png"
-          alt="Pet MBTI"
-          fill
-          className="hidden md:block object-cover object-center"
-          sizes="100vw"
-          priority
-        />
-      </div>
+      {/* Top Image Section - 슬라이드 */}
+      <HeroImageCarousel />
 
       {/* Content Section */}
       <div className="px-4 py-8 md:py-10 bg-gray-50">
@@ -71,14 +180,23 @@ export function Hero() {
           </div>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
-            <Button
-              size="lg"
-              variant="outline"
-              className="border-2 border-purple-600 text-purple-600 hover:bg-purple-50 text-lg px-8 py-3 rounded-xl"
-              asChild
-            >
-              <Link href="/test_mbti/dog/result">결과 둘러보기</Link>
-            </Button>
+            <Dialog>
+              <DialogTrigger asChild>
+                <Button
+                  size="lg"
+                  variant="outline"
+                  className="border-2 border-purple-600 text-purple-600 hover:bg-purple-50 text-lg px-8 py-3 rounded-xl"
+                >
+                  결과 둘러보기
+                </Button>
+              </DialogTrigger>
+              <DialogContent className="sm:max-w-4xl max-h-[90vh] overflow-y-auto flex flex-col">
+                <DialogHeader>
+                  <DialogTitle>16가지 유형 결과 둘러보기</DialogTitle>
+                </DialogHeader>
+                <ResultBrowseContent />
+              </DialogContent>
+            </Dialog>
           </div>
 
           <div className="flex items-center gap-6 justify-center">
