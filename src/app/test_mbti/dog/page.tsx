@@ -90,14 +90,6 @@ export default function DogTestPage() {
       });
     
       const result = calculateMbtiResult(sums);
-      const sumsOrdered = MBTI_ORDER.reduce(
-        (acc, t) => (sums[t] !== undefined ? { ...acc, [t]: sums[t] } : acc),
-        {} as Record<string, number>
-      );
-      const resultOrdered = MBTI_ORDER.reduce(
-        (acc, t) => ({ ...acc, [t]: result[t] }),
-        {} as Record<string, string>
-      );
       return newScores;
     });
   };
