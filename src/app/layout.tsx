@@ -1,4 +1,5 @@
 import { GoogleAnalytics } from "@/components/GoogleAnalytics";
+import { GA4EventTracker } from "@/components/GA4EventTracker";
 import { KakaoScript } from "@/components/KakaoScript";
 import { WebSiteJsonLd } from "@/components/JsonLd";
 import type { Metadata, Viewport } from "next";
@@ -94,7 +95,12 @@ export default function RootLayout({
       >
         <WebSiteJsonLd />
         {kakaoKey && <KakaoScript apiKey={kakaoKey} />}
-        {gaId && <GoogleAnalytics measurementId={gaId} />}
+        {gaId && (
+          <>
+            <GoogleAnalytics measurementId={gaId} />
+            <GA4EventTracker measurementId={gaId} />
+          </>
+        )}
         <div className="flex-1">{children}</div>
       </body>
     </html>

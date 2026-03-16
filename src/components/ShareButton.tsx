@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { trackEvent } from "@/lib/ga";
 
 declare global {
   interface Window {
@@ -28,9 +29,12 @@ type Props = {
   url: string;
   imageUrl?: string;
   variant?: "dog" | "cat";
+  resultCode?: string;
 };
 
-export function ShareButton({ title, text, url, imageUrl, variant = "dog" }: Props) {
+const gaId = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID;
+
+export function ShareButton({ title, text, url, imageUrl, variant = "dog", resultCode }: Props) {
   const [showModal, setShowModal] = useState(false);
   const [copied, setCopied] = useState(false);
   const [saved, setSaved] = useState(false);
@@ -55,9 +59,20 @@ export function ShareButton({ title, text, url, imageUrl, variant = "dog" }: Pro
   const catClass = "bg-orange-500 hover:bg-orange-600 active:bg-orange-700";
   const variantClass = variant === "dog" ? dogClass : catClass;
 
+  const trackShare = (method: string) => {
+    if (gaId) {
+      trackEvent(gaId, "share_click", {
+        share_method: method,
+        variant,
+        result_code: resultCode || "",
+      });
+    }
+  };
+
   const handleKakaoShare = () => {
+    trackShare("kakao");
     if (typeof window === "undefined" || !window.Kakao?.Share) {
-      handleCopyLink();
+      handleCopyLink(true);
       return;
     }
     try {
@@ -75,11 +90,12 @@ export function ShareButton({ title, text, url, imageUrl, variant = "dog" }: Pro
       });
       setShowModal(false);
     } catch {
-      handleCopyLink();
+      handleCopyLink(true);
     }
   };
 
-  const handleCopyLink = async () => {
+  const handleCopyLink = async (skipTracking?: boolean) => {
+    if (!skipTracking) trackShare("copy_link");
     try {
       await navigator.clipboard.writeText(shareTextWithMain);
       setCopied(true);
@@ -95,6 +111,7 @@ export function ShareButton({ title, text, url, imageUrl, variant = "dog" }: Pro
   };
 
   const handleSaveImage = async () => {
+    trackShare("save_image");
     if (!fullImageUrl) return;
     try {
       const res = await fetch(fullImageUrl);
@@ -116,6 +133,7 @@ export function ShareButton({ title, text, url, imageUrl, variant = "dog" }: Pro
   };
 
   const handleNativeShare = async () => {
+    trackShare("native");
     try {
       if (typeof navigator !== "undefined" && "share" in navigator && typeof navigator.share === "function") {
         const shareData: ShareData & { files?: File[] } = {
@@ -139,11 +157,11 @@ export function ShareButton({ title, text, url, imageUrl, variant = "dog" }: Pro
 
         await navigator.share(shareData);
       } else {
-        await handleCopyLink();
+        await handleCopyLink(true);
       }
       setShowModal(false);
     } catch {
-      handleCopyLink();
+      handleCopyLink(true);
     }
   };
 
@@ -151,7 +169,10 @@ export function ShareButton({ title, text, url, imageUrl, variant = "dog" }: Pro
     <>
       <button
         type="button"
-        onClick={() => setShowModal(true)}
+        onClick={() => {
+          if (gaId) trackEvent(gaId, "share_modal_open", { variant, result_code: resultCode || "" });
+          setShowModal(true);
+        }}
         className={`${baseClass} ${variantClass}`}
       >
         <svg
@@ -248,7 +269,7 @@ export function ShareButton({ title, text, url, imageUrl, variant = "dog" }: Pro
               )}
               <button
                 type="button"
-                onClick={handleCopyLink}
+                onClick={() => handleCopyLink()}
                 className="flex min-h-[52px] items-center justify-center gap-2 rounded-xl bg-zinc-100 font-semibold text-zinc-900 transition-colors hover:bg-zinc-200 dark:bg-zinc-800 dark:text-white dark:hover:bg-zinc-700"
               >
                 <svg

@@ -73,13 +73,15 @@ export default async function DogResultPage({ searchParams }: Props) {
               </div>
               {result && (
                 <div className="mt-6 w-full space-y-6 text-left">
-                  <div className="space-y-2 text-center">
+                  <div className="space-y-3 text-center">
                     <p className="text-xl font-bold text-zinc-900 dark:text-white sm:text-2xl">
                       {result.title}
                     </p>
-                    <p className="text-base leading-relaxed text-zinc-600 dark:text-zinc-400">
-                      {result.description}
-                    </p>
+                    <div className="rounded-2xl border-2 border-violet-200/80 bg-violet-50/80 px-5 py-5 text-left shadow-sm dark:border-violet-800/50 dark:bg-violet-900/20">
+                      <p className="text-lg font-semibold leading-loose text-zinc-700 dark:text-zinc-200 sm:text-xl">
+                        {result.description}
+                      </p>
+                    </div>
                   </div>
                   <section className="overflow-hidden rounded-2xl border-2 border-amber-200/80 bg-amber-50 p-5 shadow-sm dark:border-amber-800/50 dark:bg-amber-900/25">
                     <h2 className="mb-3 text-xl font-bold text-amber-800 dark:text-amber-200">
@@ -137,6 +139,7 @@ export default async function DogResultPage({ searchParams }: Props) {
                   text={`내 반려강아지 MBTI는 ${code.toUpperCase()} (${result.title})! Pet BTI에서 확인해보세요.`}
                   url={`/test_mbti/dog/result?code=${code}`}
                   imageUrl={`/images/dog/${code.toLowerCase()}.png`}
+                  resultCode={code?.toUpperCase()}
                 />
               </div>
               <Link
