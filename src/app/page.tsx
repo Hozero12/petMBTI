@@ -22,7 +22,7 @@ export default function Home() {
       <h1 className="sr-only">Pet BTI - 반려동물 MBTI 검사, 강아지·고양이 성향 테스트</h1>
       <Hero />
       <Features />
-      <PetTypes />
+      {/* <PetTypes /> */}
       {/* <CTA /> */}
       <Footer />
     </div>

@@ -7,7 +7,7 @@ export function Footer() {
           <div className="md:col-span-2">
             <div className="flex items-center gap-2 mb-4">
               <span className="text-3xl">🐾</span>
-              <h3 className="text-2xl font-bold">PetBTI (냉댱연구소)</h3>
+              <h3 className="text-2xl font-bold">PetBTI</h3>
             </div>
             <p className="text-gray-400 mb-4">
               반려동물과 더 행복한 동행을 연구합니다.

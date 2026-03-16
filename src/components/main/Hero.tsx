@@ -42,12 +42,12 @@ function HeroImageCarousel() {
   }, [api]);
 
   return (
-    <div className="relative w-full h-[500px] md:h-[600px] overflow-hidden">
+    <div className="relative w-full aspect-square overflow-hidden">
       <Carousel opts={{ loop: true }} setApi={setApi} className="w-full h-full">
         <CarouselContent className="h-full -ml-0">
           {[1, 2, 3, 4, 5].map((n) => (
             <CarouselItem key={n} className="pl-0 basis-full h-full">
-              <div className="relative w-full h-[500px] md:h-[600px] bg-gray-50">
+              <div className="relative w-full aspect-square bg-gray-50">
                 <Image
                   src={`/images/code_explain/${n}.jpeg`}
                   alt={`코드 설명 ${n}`}
@@ -89,23 +89,24 @@ function ResultBrowseContent() {
   return (
     <Tabs defaultValue="dog" className="w-full">
       <TabsList className="grid w-full grid-cols-2 mb-4">
-        <TabsTrigger value="dog">🐕 강아지</TabsTrigger>
-        <TabsTrigger value="cat">🐱 고양이</TabsTrigger>
+        <TabsTrigger value="dog">강아지</TabsTrigger>
+        <TabsTrigger value="cat">고양이</TabsTrigger>
       </TabsList>
       <TabsContent value="dog" className="mt-0">
         <div className="grid grid-cols-2 md:grid-cols-4 gap-3 max-h-[60vh] overflow-y-auto pr-1">
           {RESULT_CODES.map((code) => {
             const r = DOG_RESULTS[code];
             return (
-              <Link
+              // <Link key={code} href={`/test_mbti/dog/result?code=${code.toLowerCase()}`} className="block p-3 rounded-lg border border-gray-200 hover:border-purple-400 hover:bg-purple-50/50 transition-colors text-left">
+              <div
                 key={code}
-                href={`/test_mbti/dog/result?code=${code.toLowerCase()}`}
-                className="block p-3 rounded-lg border border-gray-200 hover:border-purple-400 hover:bg-purple-50/50 transition-colors text-left"
+                className="block p-3 rounded-lg border border-gray-200 text-left cursor-default"
               >
                 <span className="text-xs font-mono font-semibold text-purple-600">{code}</span>
                 <p className="text-sm font-bold text-gray-900 mt-0.5 line-clamp-2">{r.title}</p>
                 <p className="text-xs text-gray-500 mt-0.5 line-clamp-2">{r.description}</p>
-              </Link>
+              </div>
+              // </Link>
             );
           })}
         </div>
@@ -115,15 +116,16 @@ function ResultBrowseContent() {
           {RESULT_CODES.map((code) => {
             const r = CAT_RESULTS[code as CatResultCode];
             return (
-              <Link
+              // <Link key={code} href={`/test_mbti/cat/result?code=${code.toLowerCase()}`} className="block p-3 rounded-lg border border-gray-200 hover:border-emerald-400 hover:bg-emerald-50/50 transition-colors text-left">
+              <div
                 key={code}
-                href={`/test_mbti/cat/result?code=${code.toLowerCase()}`}
-                className="block p-3 rounded-lg border border-gray-200 hover:border-emerald-400 hover:bg-emerald-50/50 transition-colors text-left"
+                className="block p-3 rounded-lg border border-gray-200 text-left cursor-default"
               >
                 <span className="text-xs font-mono font-semibold text-emerald-600">{code}</span>
                 <p className="text-sm font-bold text-gray-900 mt-0.5 line-clamp-2">{r.title}</p>
                 <p className="text-xs text-gray-500 mt-0.5 line-clamp-2">{r.description}</p>
-              </Link>
+              </div>
+              // </Link>
             );
           })}
         </div>
