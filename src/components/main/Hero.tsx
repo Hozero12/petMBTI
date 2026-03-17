@@ -93,39 +93,39 @@ function ResultBrowseContent() {
         <TabsTrigger value="cat">고양이</TabsTrigger>
       </TabsList>
       <TabsContent value="dog" className="mt-0">
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-3 max-h-[60vh] overflow-y-auto pr-1">
+        <div className="flex flex-col gap-4 max-h-[65vh] overflow-y-auto pr-1">
           {RESULT_CODES.map((code) => {
             const r = DOG_RESULTS[code];
             return (
-              // <Link key={code} href={`/test_mbti/dog/result?code=${code.toLowerCase()}`} className="block p-3 rounded-lg border border-gray-200 hover:border-purple-400 hover:bg-purple-50/50 transition-colors text-left">
               <div
                 key={code}
-                className="block p-3 rounded-lg border border-gray-200 text-left cursor-default"
+                className="rounded-xl border border-purple-200 bg-purple-50/30 p-4 text-left"
               >
-                <span className="text-xs font-mono font-semibold text-purple-600">{code}</span>
-                <p className="text-sm font-bold text-gray-900 mt-0.5 line-clamp-2">{r.title}</p>
-                <p className="text-xs text-gray-500 mt-0.5 line-clamp-2">{r.description}</p>
+                <div className="mb-2 flex items-center gap-2">
+                  <span className="font-mono text-sm font-bold text-purple-600">{code}</span>
+                  <span className="text-sm font-bold text-gray-900">{r.title}</span>
+                </div>
+                <p className="text-sm leading-relaxed text-gray-700">{r.description}</p>
               </div>
-              // </Link>
             );
           })}
         </div>
       </TabsContent>
       <TabsContent value="cat" className="mt-0">
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-3 max-h-[60vh] overflow-y-auto pr-1">
+        <div className="flex flex-col gap-4 max-h-[65vh] overflow-y-auto pr-1">
           {RESULT_CODES.map((code) => {
             const r = CAT_RESULTS[code as CatResultCode];
             return (
-              // <Link key={code} href={`/test_mbti/cat/result?code=${code.toLowerCase()}`} className="block p-3 rounded-lg border border-gray-200 hover:border-emerald-400 hover:bg-emerald-50/50 transition-colors text-left">
               <div
                 key={code}
-                className="block p-3 rounded-lg border border-gray-200 text-left cursor-default"
+                className="rounded-xl border border-emerald-200 bg-emerald-50/30 p-4 text-left"
               >
-                <span className="text-xs font-mono font-semibold text-emerald-600">{code}</span>
-                <p className="text-sm font-bold text-gray-900 mt-0.5 line-clamp-2">{r.title}</p>
-                <p className="text-xs text-gray-500 mt-0.5 line-clamp-2">{r.description}</p>
+                <div className="mb-2 flex items-center gap-2">
+                  <span className="font-mono text-sm font-bold text-emerald-600">{code}</span>
+                  <span className="text-sm font-bold text-gray-900">{r.title}</span>
+                </div>
+                <p className="text-sm leading-relaxed text-gray-700">{r.description}</p>
               </div>
-              // </Link>
             );
           })}
         </div>

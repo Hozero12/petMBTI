@@ -62,7 +62,7 @@ export const DOG_RESULTS: Record<DogResultCode, DogResult> = {
   },
   AIBR: {
     title: "자유로운 모험 대장",
-    description: "독립적이고 대담한 리더 댕댕이에요",
+    description: "같이 있어도 혼자 노는 타입이에요 🐾 보호자 옆에 있긴 한데 딱히 안기거나 칭찬받는 것에 목매지 않아요. 겁이 없어서 뭐든 일단 해보고, 루틴대로 움직이면 가장 컨디션이 좋아요.",
     ownerMbti: ["ESTP", "ENTJ", "ENTP"],
     ownerMbtiDescription: "독립적이고 활동적인 강아지라 간섭이 적고 자유로운 환경을 주는 집사와 잘 맞아요. 새로운 활동을 함께 즐길 수 있는 집사가 좋습니다.",
     traits: ["독립적", "대담함", "활동성 높음", "자기 방식 강함"],
@@ -83,7 +83,7 @@ export const DOG_RESULTS: Record<DogResultCode, DogResult> = {
   },
   LHSF: {
     title: "따뜻한 감성 동반자",
-    description: "온화하고 사람 좋아하는 힐링형이에요",
+    description: "조용하고 다정하고 적응도 잘 해요 🐾 큰 에너지는 없지만 보호자 곁을 지키는 걸 좋아하고, 새로운 환경에도 천천히 적응해요. 예민한 편이라 큰 소리엔 움츠러들지만 금방 회복해요.",
     ownerMbti: ["INFP", "ISFJ", "ESFJ"],
     ownerMbtiDescription: "온화하고 사람을 좋아하는 성격이라 공감 능력이 높은 집사와 잘 맞아요. 함께 조용히 시간을 보내며 교감하는 관계를 좋아합니다.",
     traits: ["온화함", "사람 좋아함", "조용한 애정 표현", "안정적"],
@@ -104,7 +104,7 @@ export const DOG_RESULTS: Record<DogResultCode, DogResult> = {
   },
   LISR: {
     title: "섬세하고 똑 부러지는 관찰댕",
-    description: "독립적이고 예민한 루틴러에요",
+    description: "구석에서 다 보고 있는 타입이에요 🐾 낯선 상황에선 한발 물러서 관찰하고, 익숙해지면 조심스럽게 다가와요. 루틴이 바뀌면 며칠은 눈치를 봐요. 조용하지만 자기 페이스가 확실해요.",
     ownerMbti: ["INTJ", "INFJ", "ISTJ"],
     ownerMbtiDescription: "예민하고 관찰력이 높은 강아지라 조용하고 세심한 집사와 잘 맞아요. 작은 변화도 이해해 줄 수 있는 집사가 좋습니다.",
     traits: ["조용함", "예민함", "루틴 선호", "독립적인 성향"],
@@ -118,7 +118,7 @@ export const DOG_RESULTS: Record<DogResultCode, DogResult> = {
   },
   LIBR: {
     title: "무심한 카리스마",
-    description: "독립적이고 대범한 평온형이에요",
+    description: "혼자도 잘 놀고, 같이 있어도 적당한 거리를 좋아해요 🐾 낯선 것에 겁이 없고, 루틴이 있으면 더 안정적이에요. 안기는 건 별로지만 옆에 있는 건 좋아하는 츤데레 스타일이에요.",
     ownerMbti: ["INTJ", "ISTP", "ENTJ"],
     ownerMbtiDescription: "독립적이고 대범한 성향이라 개인 공간을 존중해주는 집사와 잘 맞아요. 과한 간섭 없이 함께 지내는 관계를 선호합니다.",
     traits: ["독립적", "대담함", "감정 표현 적음", "자기 영역 확실"],

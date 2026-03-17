@@ -102,10 +102,22 @@ export function ShareButton({ title, text, url, imageUrl, variant = "dog", resul
       setTimeout(() => setCopied(false), 2000);
       setShowModal(false);
     } catch {
-      window.open(
-        `https://twitter.com/intent/tweet?text=${encodeURIComponent(shareTextWithMain)}`,
-        "_blank",
-      );
+      // 클립보드 API 실패 시 execCommand fallback (모바일 등)
+      const textarea = document.createElement("textarea");
+      textarea.value = shareTextWithMain;
+      textarea.style.position = "fixed";
+      textarea.style.opacity = "0";
+      document.body.appendChild(textarea);
+      textarea.select();
+      try {
+        document.execCommand("copy");
+        setCopied(true);
+        setTimeout(() => setCopied(false), 2000);
+      } catch {
+        // 둘 다 실패 시 링크만 알림으로 표시
+        alert(`링크 복사에 실패했습니다. 아래 링크를 직접 복사해주세요:\n\n${fullUrl}`);
+      }
+      document.body.removeChild(textarea);
       setShowModal(false);
     }
   };
