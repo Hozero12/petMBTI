@@ -165,7 +165,7 @@ export default function CatTestPage() {
 
         <div className="w-full max-w-2xl pb-8">
           <Link
-            href={isAllAnswered ? `/test_mbti/cat/result?code=${resultCode}` : "#"}
+            href={isAllAnswered ? `/test_mbti/cat/result?code=${resultCode}&from=test` : "#"}
             aria-disabled={!isAllAnswered}
             className={`flex min-h-[52px] w-full items-center justify-center rounded-full text-base font-semibold transition-colors sm:min-h-[56px] ${
               isAllAnswered

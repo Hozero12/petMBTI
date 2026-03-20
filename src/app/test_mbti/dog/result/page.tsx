@@ -1,12 +1,15 @@
+import { CleanResultUrl } from "@/components/CleanResultUrl";
 import { ShareButton } from "@/components/ShareButton";
 import { TraitExplainerButton } from "@/components/TraitExplainerButton";
 import { getDogResult } from "@/lib/dog-results";
+import { saveTestResult } from "@/lib/save-test-result";
+import { Suspense } from "react";
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 
 type Props = {
-  searchParams: Promise<{ code?: string }>;
+  searchParams: Promise<{ code?: string; from?: string }>;
 };
 
 export async function generateMetadata({ searchParams }: Props): Promise<Metadata> {
@@ -36,11 +39,19 @@ export async function generateMetadata({ searchParams }: Props): Promise<Metadat
 }
 
 export default async function DogResultPage({ searchParams }: Props) {
-  const { code } = await searchParams;
+  const { code, from } = await searchParams;
   const result = code ? getDogResult(code.toUpperCase()) : null;
+
+  // 검사 완료 후 진입한 경우에만 저장 (공유 링크로 직접 접속 시 저장 안 함)
+  if (code && result && from === "test") {
+    await saveTestResult("dog", code);
+  }
 
   return (
     <div className="flex min-h-[100dvh] min-h-screen flex-col items-center overflow-x-hidden bg-gradient-to-b from-amber-50 to-orange-50 dark:from-zinc-900 dark:to-zinc-950">
+      <Suspense fallback={null}>
+        <CleanResultUrl />
+      </Suspense>
       <main className="flex w-full max-w-2xl flex-col gap-3 px-4 pt-0 pb-24 sm:gap-5 sm:px-6 sm:pt-1 md:gap-6 md:px-8 md:pb-28">
         <Link
           href="/"
