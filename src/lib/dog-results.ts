@@ -26,7 +26,7 @@ export const DOG_RESULTS: Record<DogResultCode, DogResult> = {
     traits: ["집사 껌딱지", "활동량 높음", "루틴 중요", "보호자 중심 행동"],
   },
   AHSF: {
-    title: "어디서든 사랑받는 핵인싸",
+    title: "붙임성좋은 사랑받는 핵인싸",
     description: "새로운 곳도, 새로운 사람도 일단 다가가고 보는 스타일이에요 🐾 보호자 옆에 있고 싶지만 묶어두면 답답해해요. 칭찬에 민감해서 혼나면 눈빛이 바로 풀리고, 기분 좋으면 온 집안을 뛰어다녀요.",
     ownerMbti: ["ENFP", "ESFP", "ESFJ"],
     ownerMbtiDescription: "사교적이고 밝은 성향이라 활동적이고 사람 만나는 것을 좋아하는 집사와 잘 맞아요. 다양한 경험과 놀이를 함께할 때 가장 행복해합니다.",
@@ -54,7 +54,7 @@ export const DOG_RESULTS: Record<DogResultCode, DogResult> = {
     traits: ["활동적", "환경 변화 민감", "혼자 탐색 좋아함", "루틴 중요"],
   },
   AISF: {
-    title: "변덕 많은 갈댕",
+    title: "변덕 많은 갈댕댕이",
     description: "보호자 기분을 제일 먼저 알아채는 예민한 레이더 🐾 큰 소리나 갑작스러운 변화에 움츠러들지만, 익숙한 사람과 있을 때는 애교가 폭발해요. 혼자 있는 시간은 싫어하지만 티는 잘 안 내요.",
     ownerMbti: ["ENFP", "INFP", "ENTP"],
     ownerMbtiDescription: "활발하지만 기분 변화가 있는 타입이라 유연한 집사와 잘 맞아요. 엄격하게 통제하기보다 자연스럽게 맞춰주는 집사가 편합니다.",
@@ -68,7 +68,7 @@ export const DOG_RESULTS: Record<DogResultCode, DogResult> = {
     traits: ["독립적", "대담함", "활동성 높음", "자기 방식 강함"],
   },
   AIBF: {
-    title: "타고난 자유 영혼",
+    title: "자유로운 독립주의 댕댕이",
     description: "규칙도, 틀도 싫은 타입이에요 🐾 산책 코스를 바꿔도 좋고, 새로운 장난감도 신나게 가지고 놀아요. 안아달라는 신호를 잘 안 보내지만, 슬쩍 옆에 와서 눕는 건 좋아해요.",
     ownerMbti: ["ENTP", "ESTP", "ENFP"],
     ownerMbtiDescription: "자유롭고 모험을 좋아하는 강아지라 즉흥적이고 활동적인 집사와 궁합이 좋아요. 다양한 경험을 함께할 때 만족도가 높습니다.",

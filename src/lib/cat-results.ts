@@ -40,7 +40,7 @@ export const CAT_RESULTS: Record<CatResultCode, CatResult> = {
     traits: ["대담함", "집사 중심", "낯선 것 경계", "영역 지킴"],
   },
   AHBF: {
-    title: "세상은 나의 캣타워",
+    title: "에너지 넘치는 사교 냥이",
     description: "집 안을 가장 빠른 속도로 달리는 타입이에요 🐾 모든 것에 호기심, 모든 사람에게 친근함. 보호자 무릎에 올라왔다가 5초 만에 뛰어내리고, 또 올라와요. 심심하면 스스로 놀거리를 찾아요 (대부분 위험한 곳이에요).",
     ownerMbti: ["ENTP", "ESTP", "ENFP"],
     ownerMbtiDescription: "호기심이 많고 활동적인 고양이라 다양한 자극을 주는 집사와 잘 맞아요. 새로운 놀이와 경험을 즐기는 집사와 궁합이 좋습니다.",
@@ -68,7 +68,7 @@ export const CAT_RESULTS: Record<CatResultCode, CatResult> = {
     traits: ["독립적", "대담함", "활동성 높음", "영역 의식 강함"],
   },
   AIBF: {
-    title: "바람 고양이",
+    title: "바람처럼 자유로운 탐험냥",
     description: "규칙도, 틀도, 정해진 자리도 싫은 타입이에요 🐾 오늘은 소파, 내일은 냉장고 위, 모레는 화장실. 어디서든 잘 자고 뭐든 잘 먹어요. 스킨십은 본인이 원할 때만 허용이에요.",
     ownerMbti: ["ENTP", "ESTP", "ENFP"],
     ownerMbtiDescription: "자유롭고 활동적인 고양이라 즉흥적이고 유연한 집사와 잘 맞아요. 다양한 환경과 놀이를 즐길 수 있는 집사가 좋습니다.",
@@ -89,14 +89,14 @@ export const CAT_RESULTS: Record<CatResultCode, CatResult> = {
     traits: ["애정 표현 많음", "사람 좋아함", "온화함"],
   },
   LHBR: {
-    title: "조용한 카리스마 고영희",
+    title: "조용한 카리스마 냥이",
     description: "겁도 없고 붙임성도 좋은데 에너지는 낮은 타입이에요 🐾 낯선 사람도 금방 친해지고 새로운 환경에도 덤덤해요. 하루 루틴이 잡혀 있으면 제일 안정적이고, 집사 무릎을 제일 좋아해요.",
     ownerMbti: ["ISTJ", "INFJ", "ESTJ"],
     ownerMbtiDescription: "신중하고 영역 의식이 있는 고양이라 일관된 생활 패턴을 가진 집사와 잘 맞아요. 예측 가능한 환경이 안정감을 줍니다.",
     traits: ["조용함", "낯선 것 경계", "신뢰 깊음", "안정적"],
   },
   LHBF: {
-    title: "느긋한 마이웨이 냥냥이",
+    title: "느긋한 마이웨이 냥이",
     description: "어디서든 잘 어울리고 뭐든 적당히 즐기는 타입이에요 🐾 낮잠도 좋고 놀이도 좋고 새 친구도 금방 사귀어요. 스트레스를 거의 받지 않아서 함께 살기 제일 편한 고양이예요.",
     ownerMbti: ["ISFP", "ESFP", "ENFP"],
     ownerMbtiDescription: "느긋하고 스트레스가 적은 성향이에요. 밝고 편안한 분위기를 만들어주는 집사와 잘 어울립니다.",
