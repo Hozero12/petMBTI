@@ -1,6 +1,6 @@
 /**
  * 강아지 MBTI 결과별 정의와 설명
- * 코드 순서: E(A/L) - S(H/I) - R(S/B) - T(R/F)
+ * 코드 순서: A/L - H/I - S/B - R/F
  */
 
 export type DogResultCode =

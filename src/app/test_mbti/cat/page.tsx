@@ -1,12 +1,15 @@
 "use client";
 
 import { CAT_QUESTIONS } from "@/data/cat-questions";
-import { calculateMbtiResult, MBTI_ORDER } from "@/lib/mbti-scoring";
+import {
+  calculateMbtiResult,
+  QUESTION_TYPES,
+  MBTI_ORDER,
+  QUESTIONS_PER_CATEGORY,
+  TOTAL_QUESTIONS,
+} from "@/lib/mbti-scoring";
 import Link from "next/link";
 import { useEffect, useMemo, useState } from "react";
-
-const QUESTIONS_PER_TYPE = 5;
-const TOTAL_QUESTIONS = 20;
 
 function shuffle<T>(array: readonly T[]): T[] {
   const result = [...array];
@@ -17,8 +20,8 @@ function shuffle<T>(array: readonly T[]): T[] {
   return result;
 }
 
-/** 각 분류별 5개씩 랜덤 선택 후 전체 셔플 (총 20문항) */
-function pick20Questions<T extends { type: string }>(questions: T[]): T[] {
+/** 카테고리별 랜덤 선택 후 전체 셔플 */
+function pickQuestions<T extends { type: string }>(questions: T[]): T[] {
   const byType: Record<string, T[]> = {};
   for (const q of questions) {
     if (!byType[q.type]) byType[q.type] = [];
@@ -26,10 +29,10 @@ function pick20Questions<T extends { type: string }>(questions: T[]): T[] {
   }
 
   const selected: T[] = [];
-  for (const type of MBTI_ORDER) {
+  for (const type of QUESTION_TYPES) {
     const pool = byType[type] ?? [];
     const shuffled = shuffle(pool);
-    const pickCount = Math.min(QUESTIONS_PER_TYPE, shuffled.length);
+    const pickCount = Math.min(QUESTIONS_PER_CATEGORY, shuffled.length);
     selected.push(...shuffled.slice(0, pickCount));
   }
 
@@ -51,7 +54,7 @@ export default function CatTestPage() {
   const [scores, setScores] = useState<Record<number, number>>({});
 
   useEffect(() => {
-    setQuestions(pick20Questions(CAT_QUESTIONS));
+    setQuestions(pickQuestions(CAT_QUESTIONS));
   }, []);
 
   const typeSums = useMemo(() => {
@@ -74,18 +77,7 @@ export default function CatTestPage() {
   const resultCode = MBTI_ORDER.map((t) => mbtiResult[t]).join("");
 
   const handleScoreSelect = (questionIndex: number, score: number) => {
-    setScores((prev) => {
-      const newScores = { ...prev, [questionIndex]: score };
-      const sums: Record<string, number> = {};
-      questions.forEach((q, i) => {
-        const s = newScores[i];
-        if (s !== undefined) {
-          sums[q.type] = (sums[q.type] ?? 0) + s;
-        }
-      });
-      const result = calculateMbtiResult(sums);
-      return newScores;
-    });
+    setScores((prev) => ({ ...prev, [questionIndex]: score }));
   };
 
   return (
@@ -102,7 +94,7 @@ export default function CatTestPage() {
             고양이 MBTI
           </h1>
           <p className="mt-2 text-zinc-600 dark:text-zinc-400">
-            총 20문항 · 모든 문항을 체크해주세요.
+            총 {TOTAL_QUESTIONS}문항 · 모든 문항을 체크해주세요.
           </p>
         </header>
 
